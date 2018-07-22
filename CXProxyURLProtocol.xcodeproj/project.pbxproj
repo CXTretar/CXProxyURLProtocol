@@ -15,6 +15,9 @@
 		DC78441D210183CC00695679 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC78441C210183CC00695679 /* main.m */; };
 		DC784427210183CC00695679 /* CXProxyURLProtocolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC784426210183CC00695679 /* CXProxyURLProtocolTests.m */; };
 		DC784432210183CC00695679 /* CXProxyURLProtocolUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC784431210183CC00695679 /* CXProxyURLProtocolUITests.m */; };
+		DC78444121018A5C00695679 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC78444021018A5C00695679 /* WebViewController.m */; };
+		DC78444521018CDA00695679 /* CXProxyURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = DC78444421018CDA00695679 /* CXProxyURLProtocol.m */; };
+		DC78444821018CF900695679 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DC78444721018CF900695679 /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,12 @@
 		DC78442D210183CC00695679 /* CXProxyURLProtocolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CXProxyURLProtocolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC784431210183CC00695679 /* CXProxyURLProtocolUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXProxyURLProtocolUITests.m; sourceTree = "<group>"; };
 		DC784433210183CC00695679 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC78443F21018A5C00695679 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		DC78444021018A5C00695679 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		DC78444321018CDA00695679 /* CXProxyURLProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXProxyURLProtocol.h; sourceTree = "<group>"; };
+		DC78444421018CDA00695679 /* CXProxyURLProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXProxyURLProtocol.m; sourceTree = "<group>"; };
+		DC78444621018CF800695679 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		DC78444721018CF900695679 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +114,9 @@
 				DC78440E210183CC00695679 /* AppDelegate.m */,
 				DC784410210183CC00695679 /* ViewController.h */,
 				DC784411210183CC00695679 /* ViewController.m */,
+				DC78443F21018A5C00695679 /* WebViewController.h */,
+				DC78444021018A5C00695679 /* WebViewController.m */,
+				DC78444221018CB900695679 /* CXProxyURLProtocol */,
 				DC784413210183CC00695679 /* Main.storyboard */,
 				DC784416210183CC00695679 /* Assets.xcassets */,
 				DC784418210183CC00695679 /* LaunchScreen.storyboard */,
@@ -130,6 +142,17 @@
 				DC784433210183CC00695679 /* Info.plist */,
 			);
 			path = CXProxyURLProtocolUITests;
+			sourceTree = "<group>";
+		};
+		DC78444221018CB900695679 /* CXProxyURLProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				DC78444621018CF800695679 /* Reachability.h */,
+				DC78444721018CF900695679 /* Reachability.m */,
+				DC78444321018CDA00695679 /* CXProxyURLProtocol.h */,
+				DC78444421018CDA00695679 /* CXProxyURLProtocol.m */,
+			);
+			path = CXProxyURLProtocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +288,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC78444521018CDA00695679 /* CXProxyURLProtocol.m in Sources */,
 				DC784412210183CC00695679 /* ViewController.m in Sources */,
 				DC78441D210183CC00695679 /* main.m in Sources */,
 				DC78440F210183CC00695679 /* AppDelegate.m in Sources */,
+				DC78444821018CF900695679 /* Reachability.m in Sources */,
+				DC78444121018A5C00695679 /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
