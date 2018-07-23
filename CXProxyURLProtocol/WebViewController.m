@@ -23,9 +23,18 @@
 }
 
 - (void)setupUI {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"reload"] style:UIBarButtonItemStylePlain target:self action:@selector(reload)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"reload" style:UIBarButtonItemStylePlain target:self action:@selector(reload)];
+    
     UIWebView *webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
     self.webView = webView;
     [self.view addSubview:webView];
+}
+
+- (void)reload {
+    
+    [self.webView reload];
+    
 }
 
 - (void)loadRequest {

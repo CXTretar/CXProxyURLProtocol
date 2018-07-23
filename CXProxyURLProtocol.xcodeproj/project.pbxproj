@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC5301C02105AA5800E467E3 /* CXProtocolCacheModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5301BF2105AA5800E467E3 /* CXProtocolCacheModel.m */; };
+		DC5301C62105AB8900E467E3 /* NSURLRequest+CXMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5301C52105AB8900E467E3 /* NSURLRequest+CXMutableCopy.m */; };
+		DC5301C92105AE9E00E467E3 /* NSString+CXHash.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5301C82105AE9E00E467E3 /* NSString+CXHash.m */; };
+		DC5301CC2105AF4600E467E3 /* NSData+CXHash.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5301CB2105AF4600E467E3 /* NSData+CXHash.m */; };
 		DC78440F210183CC00695679 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC78440E210183CC00695679 /* AppDelegate.m */; };
 		DC784412210183CC00695679 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC784411210183CC00695679 /* ViewController.m */; };
 		DC784415210183CC00695679 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC784413210183CC00695679 /* Main.storyboard */; };
@@ -38,6 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC5301BE2105AA5800E467E3 /* CXProtocolCacheModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXProtocolCacheModel.h; sourceTree = "<group>"; };
+		DC5301BF2105AA5800E467E3 /* CXProtocolCacheModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXProtocolCacheModel.m; sourceTree = "<group>"; };
+		DC5301C42105AB8900E467E3 /* NSURLRequest+CXMutableCopy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+CXMutableCopy.h"; sourceTree = "<group>"; };
+		DC5301C52105AB8900E467E3 /* NSURLRequest+CXMutableCopy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+CXMutableCopy.m"; sourceTree = "<group>"; };
+		DC5301C72105AE9E00E467E3 /* NSString+CXHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+CXHash.h"; sourceTree = "<group>"; };
+		DC5301C82105AE9E00E467E3 /* NSString+CXHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXHash.m"; sourceTree = "<group>"; };
+		DC5301CA2105AF4600E467E3 /* NSData+CXHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CXHash.h"; sourceTree = "<group>"; };
+		DC5301CB2105AF4600E467E3 /* NSData+CXHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CXHash.m"; sourceTree = "<group>"; };
 		DC78440A210183CC00695679 /* CXProxyURLProtocol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CXProxyURLProtocol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC78440D210183CC00695679 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DC78440E210183CC00695679 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -149,8 +161,16 @@
 			children = (
 				DC78444621018CF800695679 /* Reachability.h */,
 				DC78444721018CF900695679 /* Reachability.m */,
+				DC5301C72105AE9E00E467E3 /* NSString+CXHash.h */,
+				DC5301C82105AE9E00E467E3 /* NSString+CXHash.m */,
+				DC5301CA2105AF4600E467E3 /* NSData+CXHash.h */,
+				DC5301CB2105AF4600E467E3 /* NSData+CXHash.m */,
+				DC5301C42105AB8900E467E3 /* NSURLRequest+CXMutableCopy.h */,
+				DC5301C52105AB8900E467E3 /* NSURLRequest+CXMutableCopy.m */,
 				DC78444321018CDA00695679 /* CXProxyURLProtocol.h */,
 				DC78444421018CDA00695679 /* CXProxyURLProtocol.m */,
+				DC5301BE2105AA5800E467E3 /* CXProtocolCacheModel.h */,
+				DC5301BF2105AA5800E467E3 /* CXProtocolCacheModel.m */,
 			);
 			path = CXProxyURLProtocol;
 			sourceTree = "<group>";
@@ -289,10 +309,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC78444521018CDA00695679 /* CXProxyURLProtocol.m in Sources */,
+				DC5301C92105AE9E00E467E3 /* NSString+CXHash.m in Sources */,
 				DC784412210183CC00695679 /* ViewController.m in Sources */,
+				DC5301C62105AB8900E467E3 /* NSURLRequest+CXMutableCopy.m in Sources */,
 				DC78441D210183CC00695679 /* main.m in Sources */,
+				DC5301CC2105AF4600E467E3 /* NSData+CXHash.m in Sources */,
 				DC78440F210183CC00695679 /* AppDelegate.m in Sources */,
 				DC78444821018CF900695679 /* Reachability.m in Sources */,
+				DC5301C02105AA5800E467E3 /* CXProtocolCacheModel.m in Sources */,
 				DC78444121018A5C00695679 /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

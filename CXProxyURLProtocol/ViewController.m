@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "WebViewController.h"
+#import "CXProxyURLProtocol.h"
 
 @interface ViewController ()
 
@@ -17,12 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [NSURLProtocol registerClass:[CXProxyURLProtocol class]];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (IBAction)openBaidu:(id)sender {
     WebViewController *webView = [[WebViewController alloc]init];
-    webView.url = @"http://m.baidu.com";
+    webView.url = @"http://m.sina.cn";
     
     [self.navigationController pushViewController:webView animated:YES];
 }
