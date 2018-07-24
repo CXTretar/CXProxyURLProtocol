@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yjt-ct-rg2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yjt-ct-rg2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,35 +29,56 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vw0-gb-uM1"/>
+                        <viewControllerLayoutGuide type="bottom" id="3FY-dv-27E"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJG-Kz-HLt">
-                                <rect key="frame" x="126" y="249" width="122" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Open Baidu"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJG-Kz-HLt">
+                                <rect key="frame" x="87.5" y="249" width="200" height="40"/>
+                                <color key="backgroundColor" white="0.81000000000000005" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="LAP-lN-2Ha"/>
+                                    <constraint firstAttribute="height" constant="40" id="ZzH-0L-jbW"/>
+                                </constraints>
+                                <state key="normal" title="Open Baidu">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="openBaidu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uxm-CJ-8Si"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGl-SG-LFi">
-                                <rect key="frame" x="126" y="318" width="122" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Open Google"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGl-SG-LFi">
+                                <rect key="frame" x="87" y="319" width="200" height="40"/>
+                                <color key="backgroundColor" white="0.81000000000000005" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="htW-55-SZu"/>
+                                </constraints>
+                                <state key="normal" title="Open Google">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="openGoogle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c1a-i9-fEH"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="SJG-Kz-HLt" firstAttribute="top" secondItem="vw0-gb-uM1" secondAttribute="bottom" constant="185" id="14P-cY-hwg"/>
+                            <constraint firstItem="gGl-SG-LFi" firstAttribute="centerX" secondItem="SJG-Kz-HLt" secondAttribute="centerX" id="N0g-wY-VKX"/>
+                            <constraint firstItem="gGl-SG-LFi" firstAttribute="height" secondItem="SJG-Kz-HLt" secondAttribute="height" id="Q43-Te-crA"/>
+                            <constraint firstItem="SJG-Kz-HLt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ax9-yE-eAj"/>
+                            <constraint firstItem="gGl-SG-LFi" firstAttribute="top" secondItem="SJG-Kz-HLt" secondAttribute="bottom" constant="30" id="nch-BK-NWV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ewI-lB-tDP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138" y="-51"/>
+            <point key="canvasLocation" x="-138.40000000000001" y="-51.724137931034484"/>
         </scene>
     </scenes>
 </document>

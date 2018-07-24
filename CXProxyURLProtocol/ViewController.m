@@ -24,7 +24,7 @@
 
 - (IBAction)openBaidu:(id)sender {
     WebViewController *webView = [[WebViewController alloc]init];
-    webView.url = @"http://m.sina.cn";
+    webView.url = @"http://m.baidu.com/";
     
     [self.navigationController pushViewController:webView animated:YES];
 }
