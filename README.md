@@ -1,1 +1,2 @@
 # CXProxyURLProtocol
+自定义NSURLProtocol用来缓存UIWebView和科学上网。
