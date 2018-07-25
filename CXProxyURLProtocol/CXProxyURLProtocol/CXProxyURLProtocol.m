@@ -27,8 +27,6 @@ static NSObject *CachingSupportedSchemesMonitor;
 @property (nonatomic, strong) NSMutableData *data;
 @property (nonatomic, strong) NSURLResponse *response;
 
-- (void)appendData:(NSData *)newData;
-
 @end
 
 @implementation CXProxyURLProtocol
