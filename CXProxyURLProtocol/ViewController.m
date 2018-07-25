@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 注册代理协议
     [NSURLProtocol registerClass:[CXProxyURLProtocol class]];
     // Do any additional setup after loading the view, typically from a nib.
 }
