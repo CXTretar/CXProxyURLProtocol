@@ -8,7 +8,7 @@
 
 #import "WebViewController.h"
 
-@interface WebViewController ()
+@interface WebViewController ()<UIWebViewDelegate>
 
 @property (nonatomic, weak) UIWebView *webView;
 
@@ -25,6 +25,7 @@
 - (void)setupUI {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"reload"] style:UIBarButtonItemStylePlain target:self action:@selector(reload)];
     UIWebView *webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
+    webView.delegate = self;
     self.webView = webView;
     [self.view addSubview:webView];
 }
@@ -39,6 +40,13 @@
     if (_url.length) {
         NSURL *url = [NSURL URLWithString:_url];
         [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    }
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    
+    if (error) {
+        NSLog(@"%@" ,error);
     }
 }
 

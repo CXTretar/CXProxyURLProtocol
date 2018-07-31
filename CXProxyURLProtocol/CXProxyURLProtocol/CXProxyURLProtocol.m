@@ -12,13 +12,11 @@
 #import "NSString+CXHash.h"
 #import "Reachability.h"
 #import <UIKit/UIDevice.h>
-
+#import "CXProxyProtocolManager.h"
 
 #define iOS10_1Later ([UIDevice currentDevice].systemVersion.floatValue >= 10.1f)
 
 static NSString *CachingURLProtocolHandledKey = @"CachingURLProtocolHandledKey";
-static NSSet *CachingSupportedSchemes = nil;
-static NSObject *CachingSupportedSchemesMonitor;
 
 @interface CXProxyURLProtocol ()<NSURLSessionDataDelegate,NSURLSessionTaskDelegate>
 
@@ -39,33 +37,6 @@ static NSObject *CachingSupportedSchemesMonitor;
     return _session;
 }
 
-#pragma mark - Scheme
-+ (NSSet *)supportedSchemes {
-    NSSet *supportedSchemes;
-    @synchronized(CachingSupportedSchemesMonitor) {
-        supportedSchemes = CachingSupportedSchemes;
-    }
-    return supportedSchemes;
-}
-
-+ (void)setSupportedSchemes:(NSSet *)supportedSchemes {
-    @synchronized(CachingSupportedSchemesMonitor) {
-        CachingSupportedSchemes = supportedSchemes;
-    }
-}
-
-#pragma mark - override
-+ (void)initialize {
-    
-    if (self == [CXProxyURLProtocol class]){
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            CachingSupportedSchemesMonitor = [[NSObject alloc] init];
-        });
-        [self setSupportedSchemes:[NSSet setWithObjects:@"http",@"https",nil]];
-    }
-}
-
 + (BOOL)canInitWithTask:(NSURLSessionTask *)task{
     return [self canInitWithACertainRequest:task.currentRequest];
 }
@@ -77,17 +48,37 @@ static NSObject *CachingSupportedSchemesMonitor;
 #pragma mark - 打标记，防止无限循环
 + (BOOL)canInitWithACertainRequest:(NSURLRequest *)request{
     
-    if ([[self supportedSchemes] containsObject:[request.URL scheme]] && [request valueForHTTPHeaderField:CachingURLProtocolHandledKey] == nil) {
+    if ([[CXProxyProtocolManager supportedSchemes] containsObject:[request.URL scheme]] && ![NSURLProtocol propertyForKey:CachingURLProtocolHandledKey inRequest:request]) {
         //标记是否已经处理过了，防止无限循环
+        
         return YES;
     }
-    
     return NO;
 }
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
+    /** 可以在此处添加头等信息  */
+    NSMutableURLRequest *mutableReqeust = [self requestSetProxy:request];
     
-    return request;
+    return mutableReqeust;
+}
+
+#pragma mark - 设置代理服务器账号密码
+
++ (NSMutableURLRequest *)requestSetProxy:(NSURLRequest *)request {
+    
+    NSMutableURLRequest *redirectRequest = [request cx_mutableCopy];
+    if (iOS10_1Later) {
+        [NSURLProtocol setProperty:@YES forKey:CachingURLProtocolHandledKey inRequest:redirectRequest];
+    }
+    
+    CXProxyProtocolManager *proxyManager = [CXProxyProtocolManager sharedManager];
+    if (proxyManager.requestSetBlock) {
+        redirectRequest = [proxyManager.requestSetBlock(request) cx_mutableCopy] ;
+    }
+    
+    return redirectRequest;
+    
 }
 
 - (void)startLoading {
@@ -105,14 +96,37 @@ static NSObject *CachingSupportedSchemesMonitor;
             }
             
         }else{
-        
+            
             [self.client URLProtocol:self didFailWithError:[NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCannotConnectToHost userInfo:nil]];
         }
-    }else{
+    }else {
         
         NSMutableURLRequest *request = [self.request cx_mutableCopy];
-        request.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-        [request setValue:@"test" forHTTPHeaderField:CachingURLProtocolHandledKey];
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        //add custom protocol to session config
+        config.protocolClasses = [config.protocolClasses arrayByAddingObject:self.class];
+        // 设置代理服务器ip 以及 端口
+        CXProxyProtocolManager *proxyManager = [CXProxyProtocolManager sharedManager];
+        if (proxyManager.HTTPProxyHost.length && proxyManager.HTTPProxyPort) {
+            
+            NSString *proxyHost = proxyManager.HTTPProxyHost;
+            NSNumber *proxyPort = proxyManager.HTTPProxyPort;
+            NSDictionary *proxyDict = @{
+                                        @"HTTPEnable"  : [NSNumber numberWithInt:1],
+                                        (NSString *)kCFStreamPropertyHTTPProxyHost  : proxyHost,
+                                        (NSString *)kCFStreamPropertyHTTPProxyPort  : proxyPort,
+                                        
+                                        @"HTTPSEnable" : [NSNumber numberWithInt:1],
+                                        (NSString *)kCFStreamPropertyHTTPSProxyHost : proxyHost,
+                                        (NSString *)kCFStreamPropertyHTTPSProxyPort : proxyPort,
+                                        
+                                        };
+            config.connectionProxyDictionary = proxyDict;
+            
+        }
+        
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        self.session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:queue];;
         self.task = [self.session dataTaskWithRequest:request];
         [self.task resume];
     }
@@ -150,14 +164,29 @@ static NSObject *CachingSupportedSchemesMonitor;
     
     //处理重定向问题
     if (response != nil) {
-        NSMutableURLRequest *redirectableRequest = [request cx_mutableCopy];
+        NSMutableURLRequest *redirectableRequest;
+        
+        if (iOS10_1Later) {
+            redirectableRequest = [[self class] requestSetProxy:redirectableRequest];
+        }else {
+            redirectableRequest = [request cx_mutableCopy];
+        }
+        
+        [NSURLProtocol removePropertyForKey:CachingURLProtocolHandledKey inRequest:redirectableRequest];
+        
         CXProtocolCacheModel *cacheData = [[CXProtocolCacheModel alloc] init];
         cacheData.data = self.data;
         cacheData.response = response;
         cacheData.redirectRequest = redirectableRequest;
+        
         [NSKeyedArchiver archiveRootObject:cacheData toFile:[self cachePathForRequest:request]];
         
-        [self.client URLProtocol:self wasRedirectedToRequest:redirectableRequest redirectResponse:response];
+        [[self client] URLProtocol:self wasRedirectedToRequest:redirectableRequest redirectResponse:response];
+        
+        [task cancel];
+        
+        [self.client URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
+        
         completionHandler(request);
         
     } else {
@@ -172,7 +201,6 @@ static NSObject *CachingSupportedSchemesMonitor;
         
     }else {
         //将数据的缓存归档存入到本地文件中
-        NSLog(@"ok url = %@",task.currentRequest.URL.absoluteString);
         CXProtocolCacheModel *cacheData = [[CXProtocolCacheModel alloc] init];
         cacheData.data = [self.data copy];
         cacheData.response = self.response;

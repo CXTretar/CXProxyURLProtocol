@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC13F8AA21103CE600CF0BE3 /* CXProxyProtocolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC13F8A921103CE600CF0BE3 /* CXProxyProtocolManager.m */; };
 		DC5301C02105AA5800E467E3 /* CXProtocolCacheModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5301BF2105AA5800E467E3 /* CXProtocolCacheModel.m */; };
 		DC5301C62105AB8900E467E3 /* NSURLRequest+CXMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5301C52105AB8900E467E3 /* NSURLRequest+CXMutableCopy.m */; };
 		DC5301C92105AE9E00E467E3 /* NSString+CXHash.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5301C82105AE9E00E467E3 /* NSString+CXHash.m */; };
@@ -22,6 +23,7 @@
 		DC78444121018A5C00695679 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC78444021018A5C00695679 /* WebViewController.m */; };
 		DC78444521018CDA00695679 /* CXProxyURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = DC78444421018CDA00695679 /* CXProxyURLProtocol.m */; };
 		DC78444821018CF900695679 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DC78444721018CF900695679 /* Reachability.m */; };
+		DCA3C55D210B0BF5005D1189 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA3C55B210B0BF5005D1189 /* GTMBase64.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC13F8A821103CE600CF0BE3 /* CXProxyProtocolManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXProxyProtocolManager.h; sourceTree = "<group>"; };
+		DC13F8A921103CE600CF0BE3 /* CXProxyProtocolManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXProxyProtocolManager.m; sourceTree = "<group>"; };
 		DC5301BE2105AA5800E467E3 /* CXProtocolCacheModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXProtocolCacheModel.h; sourceTree = "<group>"; };
 		DC5301BF2105AA5800E467E3 /* CXProtocolCacheModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXProtocolCacheModel.m; sourceTree = "<group>"; };
 		DC5301C42105AB8900E467E3 /* NSURLRequest+CXMutableCopy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+CXMutableCopy.h"; sourceTree = "<group>"; };
@@ -72,6 +76,9 @@
 		DC78444421018CDA00695679 /* CXProxyURLProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXProxyURLProtocol.m; sourceTree = "<group>"; };
 		DC78444621018CF800695679 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DC78444721018CF900695679 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		DCA3C557210B0BF5005D1189 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		DCA3C559210B0BF5005D1189 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		DCA3C55B210B0BF5005D1189 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +129,7 @@
 		DC78440C210183CC00695679 /* CXProxyURLProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				DCA3C556210B0BF5005D1189 /* GTMBase64 */,
 				DC78440D210183CC00695679 /* AppDelegate.h */,
 				DC78440E210183CC00695679 /* AppDelegate.m */,
 				DC784410210183CC00695679 /* ViewController.h */,
@@ -171,8 +179,20 @@
 				DC78444421018CDA00695679 /* CXProxyURLProtocol.m */,
 				DC5301BE2105AA5800E467E3 /* CXProtocolCacheModel.h */,
 				DC5301BF2105AA5800E467E3 /* CXProtocolCacheModel.m */,
+				DC13F8A821103CE600CF0BE3 /* CXProxyProtocolManager.h */,
+				DC13F8A921103CE600CF0BE3 /* CXProxyProtocolManager.m */,
 			);
 			path = CXProxyURLProtocol;
+			sourceTree = "<group>";
+		};
+		DCA3C556210B0BF5005D1189 /* GTMBase64 */ = {
+			isa = PBXGroup;
+			children = (
+				DCA3C557210B0BF5005D1189 /* GTMBase64.h */,
+				DCA3C559210B0BF5005D1189 /* GTMDefines.h */,
+				DCA3C55B210B0BF5005D1189 /* GTMBase64.m */,
+			);
+			path = GTMBase64;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,7 +334,9 @@
 				DC5301C62105AB8900E467E3 /* NSURLRequest+CXMutableCopy.m in Sources */,
 				DC78441D210183CC00695679 /* main.m in Sources */,
 				DC5301CC2105AF4600E467E3 /* NSData+CXHash.m in Sources */,
+				DCA3C55D210B0BF5005D1189 /* GTMBase64.m in Sources */,
 				DC78440F210183CC00695679 /* AppDelegate.m in Sources */,
+				DC13F8AA21103CE600CF0BE3 /* CXProxyProtocolManager.m in Sources */,
 				DC78444821018CF900695679 /* Reachability.m in Sources */,
 				DC5301C02105AA5800E467E3 /* CXProtocolCacheModel.m in Sources */,
 				DC78444121018A5C00695679 /* WebViewController.m in Sources */,
@@ -481,6 +503,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 29C2LLD5FB;
 				INFOPLIST_FILE = CXProxyURLProtocol/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -495,6 +518,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 29C2LLD5FB;
 				INFOPLIST_FILE = CXProxyURLProtocol/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
