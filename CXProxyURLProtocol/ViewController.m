@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 #import "WebViewController.h"
-#import "CXProxyURLProtocol.h"
+#import "CXProxyProtocolManager.h"
+#import "GTMBase64.h"
+#import "NSURLRequest+CXMutableCopy.h"
 
 @interface ViewController ()
 
@@ -18,9 +20,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 注册代理协议
-    [NSURLProtocol registerClass:[CXProxyURLProtocol class]];
-    // Do any additional setup after loading the view, typically from a nib.
+    /* 注册代理协议实现 webview 内容缓存 */
+    [CXProxyProtocolManager registerProxyURLProtocol];
+    
+    /* 以下注释内容为连接代理服务器科学上网的配置 */
+//    [CXProxyProtocolManager setHTTPProxyHost:@"39.106.18.130" andHTTPProxyPort:@21886];
+//
+//    CXProxyProtocolManager *proxyManager = [CXProxyProtocolManager sharedManager];
+//
+//    proxyManager.requestSetBlock = ^NSMutableURLRequest *(NSURLRequest *request) {
+//
+//        NSMutableURLRequest *redirectRequest = [request cx_mutableCopy];
+//        NSString *authorizationToken = @"proxy:10bf5fc34f0d55243ab6849d99ecb712";
+//        NSData *data = [authorizationToken dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+//        data = [GTMBase64 encodeData:data];
+//        NSString *base64String = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        authorizationToken = [NSString stringWithFormat:@"Basic %@", base64String];
+//        [redirectRequest addValue:authorizationToken forHTTPHeaderField:@"Proxy-Authorization"];
+//        return redirectRequest;
+//    };
+
 }
 
 - (IBAction)openBaidu:(id)sender {
@@ -31,6 +50,9 @@
 }
 
 - (IBAction)openGoogle:(id)sender {
+    
+    // 要实现项目内部科学上网,必须满足 1.代理服务器可以科学上网 2. 使用 CXProxyProtocolManager 来连接代理服务器
+    
     WebViewController *webView = [[WebViewController alloc]init];
     webView.url = @"http://www.google.com";
     
