@@ -44,7 +44,7 @@
 
 - (IBAction)openBaidu:(id)sender {
     WebViewController *webView = [[WebViewController alloc]init];
-    webView.url = @"http://m.baidu.com/";
+    webView.url = @"https://m.baidu.com/";
     
     [self.navigationController pushViewController:webView animated:YES];
 }
@@ -54,7 +54,7 @@
     // 要实现项目内部科学上网,必须满足 1.代理服务器可以科学上网 2. 使用 CXProxyProtocolManager 来连接代理服务器
     
     WebViewController *webView = [[WebViewController alloc]init];
-    webView.url = @"http://www.google.com";
+    webView.url = @"https://www.google.com";
     
     [self.navigationController pushViewController:webView animated:YES];
     

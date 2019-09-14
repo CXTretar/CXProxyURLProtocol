@@ -189,8 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				DCA3C557210B0BF5005D1189 /* GTMBase64.h */,
-				DCA3C559210B0BF5005D1189 /* GTMDefines.h */,
 				DCA3C55B210B0BF5005D1189 /* GTMBase64.m */,
+				DCA3C559210B0BF5005D1189 /* GTMDefines.h */,
 			);
 			path = GTMBase64;
 			sourceTree = "<group>";
